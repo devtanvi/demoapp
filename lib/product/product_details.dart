@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductDetails extends StatefulWidget {
   final String id;
+
   ProductDetails({
     super.key,
     required this.id,
@@ -51,11 +52,6 @@ class _ProductDetailsState extends State<ProductDetails> {
       await prefs.setString(key, cartJson);
     }
   }
-
-  ///////////////////////////////
-
-  ////////////////////////////
-  //
   // Future<void> addToCart(ProductData item) async {
   //   final cartProvider =
   //       CartProvider(); // You need to define your CartProvider class.

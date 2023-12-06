@@ -7,7 +7,7 @@ import '../login/Login_Screen.dart';
 class Navigate {
   static Map<String, Widget Function(BuildContext)> routes = {
     '/': (context) => WelcomePage(),
-    '/Sign-up':(context)=>SignUp(),
+    '/Sign-up': (context) => SignUp(),
     '/sign-in': (context) => LoginScreen(),
     '/home': (context) => HomeScreen()
   };

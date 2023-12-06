@@ -43,8 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
         'name': userData['name'],
       });
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => SignUp()),
-          (route) => false);
+          MaterialPageRoute(builder: (_) => SignUp()), (route) => false);
     } on FirebaseAuthException catch (e) {
       var content = '';
       switch (e.code) {
@@ -145,182 +144,188 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           backgroundColor: Colors.blue,
         ),
-        body:  loading== true?
-        Center(
-          child: CircularProgressIndicator(
-            color: Colors.blue,
-          ),
-        )
-        :Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                    child: Text(
-                      'Welcome',
-                      style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                    child: Text(
-                      'Sign In to Continue',
-                      style: TextStyle(
-                          color: Colors.black45,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                    child: TextFormField(
-                      controller: emailController,
-                      focusNode: emailFocus,
-                      onFieldSubmitted: (value) {
-                        passwordFocus.requestFocus();
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(), labelText: "Email"),
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            !value.contains("@") ||
-                            !value.contains('.')) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                    child: TextFormField(
-                      controller: passwordController,
-                      focusNode: passwordFocus,
-                      onFieldSubmitted: (value) {},
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(), labelText: "Password"),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 25.0),
-                    child: Center(
-                      child: SizedBox(
-                        width: width / 1.5,
-                        height: 60,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.lightBlueAccent.shade100),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              print('tap');
-                              logInUser(emailController.text,
-                                  passwordController.text);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Please fill input')),
-                              );
-                            }
-                          },
-                          child: const Text(
-                            'Submit',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(
+        body: loading == true
+            ? Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
+                ),
+              )
+            : Form(
+                key: _formKey,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              _loginWithFacebook();
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset("asset/image/fb.png",
-                                  fit: BoxFit.fill),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          GoogleSignIn(),
-                          // InkWell(
-                          //   onTap: () async {
-                          //     GoogleSignIn();
-                          //   },
-                          //   child: Container(
-                          //     height: 50,
-                          //     width: 50,
-                          //     child: Image.asset("asset/image/google.png",
-                          //         fit: BoxFit.fill),
-                          //   ),
-                          // ),
-                        ]),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'DO Not Have Account ? ',
-                          style: TextStyle(fontSize: 18, color: Colors.black26),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const SignUp()));
-                          },
+                        const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                           child: Text(
-                            'Register',
-                            style: TextStyle(fontSize: 18, color: Colors.blue),
+                            'Welcome',
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 26,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
-                      ])
-                ],
-              ),
-            ),
-          ),
-        )
-   );
+                        const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          child: Text(
+                            'Sign In to Continue',
+                            style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: TextFormField(
+                            controller: emailController,
+                            focusNode: emailFocus,
+                            onFieldSubmitted: (value) {
+                              passwordFocus.requestFocus();
+                            },
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "Email"),
+                            validator: (value) {
+                              if (value!.isEmpty ||
+                                  !value.contains("@") ||
+                                  !value.contains('.')) {
+                                return 'Please enter your email';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: TextFormField(
+                            controller: passwordController,
+                            focusNode: passwordFocus,
+                            onFieldSubmitted: (value) {},
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "Password"),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 25.0),
+                          child: Center(
+                            child: SizedBox(
+                              width: width / 1.5,
+                              height: 60,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.lightBlueAccent.shade100),
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    print('tap');
+                                    logInUser(emailController.text,
+                                        passwordController.text);
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('Please fill input')),
+                                    );
+                                  }
+                                },
+                                child: const Text(
+                                  'Submit',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Center(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    _loginWithFacebook();
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    child: Image.asset("asset/image/fb.png",
+                                        fit: BoxFit.fill),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                GoogleSignIn(),
+                                // InkWell(
+                                //   onTap: () async {
+                                //     GoogleSignIn();
+                                //   },
+                                //   child: Container(
+                                //     height: 50,
+                                //     width: 50,
+                                //     child: Image.asset("asset/image/google.png",
+                                //         fit: BoxFit.fill),
+                                //   ),
+                                // ),
+                              ]),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'DO Not Have Account ? ',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black26),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignUp()));
+                                },
+                                child: Text(
+                                  'Register',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.blue),
+                                ),
+                              ),
+                            ])
+                      ],
+                    ),
+                  ),
+                ),
+              ));
   }
 }
 

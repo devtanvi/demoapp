@@ -208,51 +208,53 @@ class _CartPageState extends State<CartPage> {
         floatingActionButton: Container(
           height: 50,
           margin: const EdgeInsets.all(10),
-          child: cartItems.isNotEmpty?
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlueAccent.shade100),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectAddress()));
-                },
-              child: Container(
-                alignment: Alignment.center,
-                height: 60,
-                width: 200,
-                child: Text(
-                  'PROCEED TO CHECKOUT',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ))
-         : ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlueAccent.shade100),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductList()));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 60,
-                width: 200,
-                child: Text(
-                  'ADD ITEMS',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              )),
+          child: cartItems.isNotEmpty
+              ? ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.lightBlueAccent.shade100),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SelectAddress()));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 60,
+                    width: 200,
+                    child: Text(
+                      'PROCEED TO CHECKOUT',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ))
+              : ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.lightBlueAccent.shade100),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductList()));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 60,
+                    width: 200,
+                    child: Text(
+                      'ADD ITEMS',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  )),
         ));
   }
-
-
 }

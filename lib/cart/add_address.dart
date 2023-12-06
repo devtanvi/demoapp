@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddAddress extends StatefulWidget {
-  final Address? addressToEdit; // Pass the address to edit
+  final Address? addressToEdit;
 
   AddAddress({
     super.key,
@@ -18,7 +18,7 @@ class AddAddress extends StatefulWidget {
 }
 
 class _AddAddressState extends State<AddAddress> {
-  bool isEditing =false;
+  bool isEditing = false;
 
   Future<List<Address>> loadAddresses() async {
     final prefs = await SharedPreferences.getInstance();
@@ -138,7 +138,6 @@ class _AddAddressState extends State<AddAddress> {
     super.initState();
     print('object:${widget.addressToEdit}');
     if (widget.addressToEdit != null) {
-
       countryDropDown = widget.addressToEdit?.country ?? "";
       nameController.text = widget.addressToEdit?.name ?? '';
       phoneController.text = widget.addressToEdit?.phone ?? '';
@@ -515,7 +514,7 @@ class _AddAddressState extends State<AddAddress> {
                       );
                     },
                   ).toList(),
-                  validator: (value) =>value == null  ? 'field required' : null,
+                  validator: (value) => value == null ? 'field required' : null,
                   onChanged: (val) {
                     setState(() {
                       isEditing = false;

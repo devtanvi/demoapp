@@ -1,5 +1,4 @@
 import 'package:demoapp/demo/constant.dart';
-import 'package:demoapp/login/Login_Screen.dart';
 import 'package:demoapp/product/product_Listing.dart';
 import 'package:flutter/material.dart';
 import 'demo/firebaseservice.dart';
@@ -21,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-    showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context) {
     Widget cancelButton = TextButton(
       child: Text("Cancel"),
       onPressed: () {
@@ -104,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text("USER EMAIL:${user!.email!}"),
                     Text("USER NAME:${user!.displayName!}"),
-                   // Text("USER CONTACT:${user!.phoneNumber}"),
+                    // Text("USER CONTACT:${user!.phoneNumber}"),
                   ],
                 ),
                 SizedBox(

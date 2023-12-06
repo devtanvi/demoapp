@@ -103,8 +103,6 @@ class _SelectAddressState extends State<SelectAddress> {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.black, width: 2),
                       borderRadius: BorderRadius.circular(5),
-
-                      //set border radius more than 50% of height and width to make circle
                     ),
                     child: Column(
                       children: [
@@ -121,8 +119,6 @@ class _SelectAddressState extends State<SelectAddress> {
                           title: Text('${address.name}'),
                           subtitle: Text(
                               '${address.add1}, ${address.add2}, ${address.landmark}, ${address.city}, ${address.state}, \n${address.pinCode}, ${address.country}'),
-
-                          // You can display other address details here as needed
                         ),
                         ElevatedButton(
                             style: ButtonStyle(
@@ -284,23 +280,11 @@ class _SelectAddressState extends State<SelectAddress> {
   }
 
   void handlePaymentErrorResponse(PaymentFailureResponse response) {
-    /*
-    * PaymentFailureResponse contains three values:
-    * 1. Error Code
-    * 2. Error Description
-    * 3. Metadata
-    * */
     showAlertDialog1(context, "Payment Failed",
         "Code: ${response.code}\nDescription: ${response.message}\nMetadata:${response.error.toString()}");
   }
 
   void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
-    /*
-    * Payment Success Response contains three values:
-    * 1. Order ID
-    * 2. Payment ID
-    * 3. Signature
-    * */
     showAlertDialog1(
         context, "Payment Successful", "Payment ID: ${response.paymentId}");
   }
@@ -311,14 +295,12 @@ class _SelectAddressState extends State<SelectAddress> {
   }
 
   void showAlertDialog1(BuildContext context, String title, String message) {
-    // set up the buttons
     Widget continueButton = ElevatedButton(
       child: const Text("Continue"),
       onPressed: () {
         Navigator.pop(context);
       },
     );
-    // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text(title),
       content: Text(message),
@@ -326,7 +308,6 @@ class _SelectAddressState extends State<SelectAddress> {
         continueButton,
       ],
     );
-    // show the dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {

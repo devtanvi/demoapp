@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:demoapp/product/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import '../cart/mycart_screen.dart';
 
 class ProductList extends StatefulWidget {
@@ -53,13 +51,6 @@ class _ProductListState extends State<ProductList> {
     super.initState();
     ProductList(accessToken);
   }
-
-  // void filterItems(String query) {
-  //   setState(() {
-  //     filteredItems = prduct.
-  //         .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-  //         .toList();
-  //   });
   @override
   Widget build(BuildContext context) {
     return Scaffold(

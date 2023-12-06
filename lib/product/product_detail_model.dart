@@ -206,6 +206,7 @@ class ProductData {
       "options": options,
     };
   }
+
   void updateQuantity(int newQuantity) {
     quantity = newQuantity;
   }

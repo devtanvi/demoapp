@@ -14,6 +14,7 @@ class ProductDetail {
     );
   }
 }
+
 class ProductData {
   String productId;
   String model;
@@ -105,9 +106,10 @@ class ProductData {
     List<ProductImage> images = (json['images'] as List<dynamic>? ?? [])
         .map((item) => ProductImage.fromJson(item))
         .toList();
-    List<ProductAttribute> attribute = (json['attribute'] as List<dynamic>? ?? [])
-        .map((item) => ProductAttribute.fromJson(item))
-        .toList();
+    List<ProductAttribute> attribute =
+        (json['attribute'] as List<dynamic>? ?? [])
+            .map((item) => ProductAttribute.fromJson(item))
+            .toList();
 
     return ProductData(
       productId: json['product_id'] ?? "",
